@@ -45,7 +45,7 @@ class FPMC(AbstractModel):
             'current_loc')) - 1  # Markov chain 仅根据最后一个位置来预测，所以要拿出最后一个位置
         last_loc_index = last_loc_index.to(self.device)
         # batch_size * 1
-        last_loc = torch.gather(
+        last_loc = torch.her(
             batch['current_loc'], dim=1, index=last_loc_index.unsqueeze(1))
 
         user_emb = self.UI_emb(batch['uid'])  # batch_size * embedding_size
