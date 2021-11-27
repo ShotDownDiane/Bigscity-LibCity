@@ -62,6 +62,37 @@ class GCNLayer(nn.Module):
         output = self.gcn_layer(input_)
         return output
 
+class TrainableAdjacencyGCN(nn.Module):
+    def __init__(self, num_of_features, num_of_filter):
+        """
+        One layer of GCN
+
+        Arguments:
+            num_of_features {int} -- the dimension of node feature
+            num_of_filter {int} -- the number of graph filters
+        """
+        super(TrainableAdjacencyGCN, self).__init__()
+        self.gcn_layer = nn.Sequential(
+            nn.Linear(in_features=num_of_features,
+                      out_features=num_of_filter),
+            nn.ReLU()
+        )
+
+    def forward(self, input_, adj):
+        """
+        Arguments:
+            input {Tensor} -- signal matrix,shape (batch_size,N,T*D)
+            adj {np.array} -- adjacent matrix，shape (N,N)
+
+        Returns:
+            {Tensor} -- output,shape (batch_size,N,num_of_filter)
+        """
+        batch_size, _, _ = input_.shape
+        adj = adj.to(input_.device).repeat(batch_size, 1, 1)
+        input_ = torch.bmm(adj, input_)
+        output = self.gcn_layer(input_)
+        return output
+
 #可训练邻接矩阵+非共享权重GCN卷积
 class AVWGCN(nn.Module):
     def __init__(self, dim_in, dim_out, cheb_k, embed_dim):
