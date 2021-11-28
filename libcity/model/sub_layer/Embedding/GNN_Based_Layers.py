@@ -117,6 +117,40 @@ class AVWGCN(nn.Module):
         x_g = x_g.permute(0, 2, 1, 3)  # B, N, cheb_k, dim_in
         x_gconv = torch.einsum('bnki,nkio->bno', x_g, weights) + bias     # b, N, dim_out
         return x_gconv
+#fixme 修改
+class TimedistributedGCN(nn.Module):
+    def __init__(self, num_of_features, num_of_filter):
+        """
+        TimedistributedGCN
+
+        Arguments:
+            num_of_features {int} -- the dimension of node feature
+            num_of_filter {int} -- the number of graph filters
+        """
+        super(TrainableAdjacencyGCN, self).__init__()
+        self.gcn_layer = nn.Sequential(
+            nn.Linear(in_features=num_of_features,
+                      out_features=num_of_filter),
+            nn.ReLU()
+        )
+
+    def forward(self, input_, adj):
+        """
+        Arguments:
+            input {Tensor} -- signal matrix,shape (batch_size,T,N,D)
+            adj {np.array} -- adjacent matrix，shape (N,N)
+
+        Returns:
+            {Tensor} -- output,shape (batch_size,N,num_of_filter)
+        """
+        B, T,N, D = input_.shape
+        input_=input_.view(B*T,N,D)
+        adj = adj.to(input_.device).repeat(B, 1, 1)
+        input_ = torch.bmm(adj, input_)
+        output = self.gcn_layer(input_)
+        #fixme 这里是不是有问题
+        output=output.view(B,T,N,D)
+        return output
 
 '''todo list :
         GAT相关模型
