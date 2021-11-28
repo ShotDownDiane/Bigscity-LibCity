@@ -69,3 +69,5 @@ class SpatialViewConv(nn.Module):
     def forward(self, inp):
         return self.relu(self.batch(self.conv(inp)))
 
+
+
