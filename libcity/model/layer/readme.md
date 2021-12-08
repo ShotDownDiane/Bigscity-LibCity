@@ -1,7 +1,7 @@
 | Layer | Model | Completer | Test |
 | :- | :-: | :-: | :-:|
 |Spatial.gnn.GCN|-| ZWT | √ | 
-|Spatial.gnn.GAT|-| ZWT | √ |
+|Spatial.gnn.GAT|-| ZWT | × |
 |Spatial.gnn.AVWGCN|AGCRN|ZWT|√|
 |Spatial.gnn.LearnedGCN|STAGGCN|ZWT|×|
 |Spatial.gnn.ChebConvWithSAt|ASTGCN|ZWT|√|
