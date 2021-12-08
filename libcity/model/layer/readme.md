@@ -1,3 +1,4 @@
+# Layer List
 | Layer | Model | Completer | Test |
 | :- | :-: | :-: | :-:|
 |Spatial.gnn.GCN|-| ZWT | √ | 
@@ -24,3 +25,8 @@
 |output.encoder_decoder.GMANDecoder|GMAN| ZWT | √  |
 |output.mlp.FusionLayer|ASTGCN| ZWT | √  |
 |output.mlp.FC|GMAN| ZWT | √  |
+# Todo List
+| Layer | Model |
+| :- | :-: |
+|output.mlp.FC(example)|GMAN|
+
