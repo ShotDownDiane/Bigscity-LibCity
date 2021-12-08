@@ -1,5 +1,14 @@
-#分支功能介绍
-此分支用来实现对模型的分解。目前库中大部分模型由不同同学完成，造成大量的代码冗余。例如，对路网数据进行建模的GCN网络层，每位同学都有自己的GCN实现。这样的实现除了代码冗余还会带来很多问题，如无法确
-定网络层的正确性和有效性，也没有给开发者二次开发过程提供良好的解释。
-所以这里对交通大数据任务中经常会使用到的一些网络层进行实现，为开发者
-提供可信的网络层，使其可以更高效的进行二次开发。
+| Layer | Model | Completer | Test |
+| :- | :-: | :-: | :-:|
+|Spatial.gnn.GCN|-| ZWT | √ | 
+|Spatial.gnn.GAT|-| ZWT | √ |
+|Spatial.gnn.AVWGCN|AGCRN|ZWT|√|
+|Spatial.gnn.LearnedGCN|---|ZWT|√|
+|Spatial.gnn.ChebConvWithSAt|ASTGCN|ZWT|√|
+|Spatial.cnn.CNN|-| ZWT | √ | 
+|Spatial.cnn.SpatialViewCNN|ASTGCN| ZWT | √ | 
+|Spatial.atten.SpatialAttention|GMAN| ZWT | √ | 
+|Spatial.embedding.Embed|GMAN| ZWT | √ | 
+|Spatial.embedding.PositionalEmbedding|DCRNN| ZWT | × | 
+|Spatial.embedding.STEmbedding |GMAN| ZWT | √  |
+|Spatial.embedding.MultiEmbed|GeoSAN***| ZWT | √  |
