@@ -19,4 +19,8 @@
 |Temporal.cnn.TemporalCNN|-| ZWT | √  |
 |Temporal.tcn.TemporalConvNet|TCN| ZWT | ×  |
 |Temporal.atten.TemporalAttention|GMAN| ZWT | √  |
-
+|output.atten.TransformAttention|GMAN| ZWT | √  |
+|output.encoder_decoder.GMANEncoder|GMAN| ZWT | √  |
+|output.encoder_decoder.GMANDecoder|GMAN| ZWT | √  |
+|output.mlp.FusionLayer|ASTGCN***| ZWT | √  |
+|output.mlp.FC|GMAN| ZWT | √  |
