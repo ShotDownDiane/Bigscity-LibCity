@@ -12,3 +12,11 @@
 |Spatial.embedding.PositionalEmbedding|DCRNN| ZWT | × | 
 |Spatial.embedding.STEmbedding |GMAN| ZWT | √  |
 |Spatial.embedding.MultiEmbed|GeoSAN***| ZWT | √  |
+|Temporal.rnn.TGRU|-| ZWT | √  |
+|Temporal.rnn.TGCGRU|TGCN| ZWT | √  |
+|Temporal.rnn.AGCGRU|AGCRN| ZWT | √  |
+|Temporal.rnn.TLSTM|-| ZWT | √  |
+|Temporal.cnn.TemporalCNN|-| ZWT | √  |
+|Temporal.tcn.TemporalConvNet|TCN| ZWT | ×  |
+|Temporal.atten.TemporalAttention|GMAN| ZWT | √  |
+
